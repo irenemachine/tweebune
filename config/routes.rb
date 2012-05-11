@@ -1,4 +1,8 @@
 Tweebune::Application.routes.draw do
+
+  root :to => 'user#index'
+  post '/fetch' => 'user#fetch'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tweebune</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Tweebune</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="top-nav">
+      <%= render "user/input" %>
+      <%= render "user/nav" %>
+    </div>
+    <div id="header">
+      <h4>
+        <a href='/'>          The Tweebune        </a>
+      </h4>
+    </div>
+    <div style="clear:both;" />
 
-<%= yield %>
 
-</body>
+      <%= yield %>
+
+      <footer>Powered by Google</footer>
+    </div>
+
+  </body>
+
 </html>
+
+
