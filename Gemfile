@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
+require 'mongo'
 gem 'rails', '3.1.3'
+gem "mongo_mapper"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

@@ -1,4 +1,6 @@
 <div id="tweets">
-  <h1>User#tweets</h1>
-  <p>Find me in app/views/user/tweets.html.erb</p>
+  <h1>Tweets for <%= @user.name %> </h1>
+  <% @user.tweets.each do |tweet| %>
+    <p><%= tweet.text %></p>
+  <% end %>
 </div>
