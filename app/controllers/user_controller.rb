@@ -16,15 +16,28 @@ require 'json'
     end
     unless @tweets.length.eql? 0
       @user.since_id = @tweets[0]["id_str"]
-      @user.tweets << @tweets
+      @tweets.each do |tweet|
+        @user.tweets << Tweet.new(tweet)
+      end
     end
     @user.save
   end
 
+  private
+
   def get_tweets username, since_id=nil
-    url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{username}"
-    url << "&since_id=#{since_id}" unless since_id.nil?
-    JSON.parse(Net::HTTP.get_response(URI(url)).body)
+    new_tweets = Array.new
+    since_id=nil
+    i=0
+    while true
+      i+=1
+      url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{username}&rpp=100&page=#{i}"
+      url << "&since_id=#{since_id}" unless since_id.nil?
+      next_tweets = JSON.parse(Net::HTTP.get_response(URI(url)).body)
+      new_tweets.concat(next_tweets)
+      break if next_tweets.length.eql? 0
+    end
+    new_tweets
   end
 
   def valid_name?
@@ -42,9 +55,4 @@ require 'json'
     end
   end
 
-  def private_user
-  end
-
-  def dne_user
-  end
 end
