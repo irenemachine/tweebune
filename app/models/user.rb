@@ -11,7 +11,6 @@ class User
   after_create :update_tweets
 
   def update_tweets
-    puts "update_tweets"
     tweets = self.since_id ? Twitter.user_timeline(self.name, :count => 200, :since_id => self.since_id) : Twitter.user_timeline(self.name, :count => 200)
     puts tweets.length
     if tweets.length > 0
