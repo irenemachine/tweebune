@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
-require 'mongo'
+gem 'mongo'
 gem 'rails', '3.1.3'
 gem "mongo_mapper"
+gem 'bson_ext'
 gem "twitter"
 
 # Bundle edge Rails instead:
@@ -34,10 +35,11 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
-  gem "webmock"
 end
