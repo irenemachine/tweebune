@@ -31,7 +31,7 @@ describe UserController do
       user.stub!(:protected?).and_return(false)
 
       lambda {post 'fetch', "user" => username}.should raise_error
-      User.find_by_name(username).should_not == nil
+      User.find_by_name(username).name.should == username
     end
   end
 end
