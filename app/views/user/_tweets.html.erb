@@ -2,5 +2,8 @@
   <h1>Tweets for <%= @user.name %> </h1>
   <% @user.tweets.each do |tweet| %>
     <p><%= tweet.text %></p>
+    <% tweet.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
   <% end %>
 </div>

@@ -3,6 +3,6 @@ FactoryGirl.define do
     name "irenehaque"
     since_id nil
     tweets nil
-    categories nil
+    #categories nil
   end
 end
