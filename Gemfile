@@ -6,6 +6,7 @@ gem "mongo_mapper"
 gem 'bson_ext'
 gem "twitter"
 gem "xml-simple" #needed for alchemyapi.rb"
+gem "faye"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
