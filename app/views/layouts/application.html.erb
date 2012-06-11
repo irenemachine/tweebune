@@ -8,24 +8,27 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="top-nav">
-      <%= render "user/input" %>
-      <%= render "user/nav" %>
+    <div class = "banner-wrap">
+      <div class = "banner">
+        <h4>
+          <a href='/'>          The Tweebune        </a>
+        </h4>
+        <%= render "user/input" %>
+      </div>
+      <div id="spinner" class="spinner" style="display:none;">
+        <%= image_tag("spinner.gif") %>
+      </div>
+      <div class = "grid">
+        <%= yield %>
+      </div>
+
+      <div class = "row footer">
+        <footer>Powered by Twitter, Google & AlchemyAPI</footer>
+      </div>
     </div>
-    <div id="header">
-      <h4>
-        <a href='/'>          The Tweebune        </a>
-      </h4>
-    </div>
-    <div style="clear:both;" />
+  </div>
 
-
-      <%= yield %>
-
-      <footer>Powered by Google</footer>
-    </div>
-
-  </body>
+</body>
 
 </html>
 

@@ -2,7 +2,7 @@ html, body { margin: 0; padding: 0; }
 /*body { background: #ddd; color: #000; font: normal 90%/1.3 Georgia,serif; }*/
 body { color: #000; background: #fff; }
 * {
-    font-family: Georgia, 'times new roman', times, serif;
+    font-family: 'Courier New', times, serif;
     /*font-family: proxima_nova_soft_semibold;*/
 }
 a {    
@@ -38,14 +38,14 @@ form table tbody th { font-weight: normal; padding-top: .3em; text-align: right;
 #header {
     margin-top: 5px;
     float: left;
+    text-align: center;
 }
 footer {
-    background: #4A4D4D;
     font-size: 10px;
     font-weight: bold;
     text-align: center;
     width: 100%;
-    color: #FFF;
+    color: #4A4D4D;
     padding: 5px;
     float: left;
     margin: 5px 0;
@@ -98,26 +98,4 @@ ul.comments blockquote { color: #333; font-style: normal; margin: 0;
 .username input[type='text'] {
     width: 150px;
     height: 
-}
-.top-nav {
-    /*width: 50%;*/
-    float: right;
-    font-size: 12px;
-    height: 25px;
-    line-height: 25px;
-    margin: 3px 0;
-}
-.top-nav #username-form {
-    float: right;
-}
-.top-nav ul {
-    list-style: none;
-    float: right;
-    margin: 1px;
-    padding: 0;
-}
-.top-nav li {
-    display: block;
-    float: left;
-    margin: 0 5px;
 }

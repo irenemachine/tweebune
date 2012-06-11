@@ -6,18 +6,6 @@
   margin: 0 5px;
 }
 
-ul#nav {
-  display: none;
-}
-
-#analysis {
-  display: none;
-}
-
-#news {
-  display: none;
-}
-
 table td {
   vertical-align: top;
 }
@@ -28,5 +16,12 @@ ul#analysis li {
 
 ul#tweets li {
   font-size: 14px;
+}
+
+.banner-wrap {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	padding: 0 10px 1em;
+	margin-bottom: 1em;
 }
 

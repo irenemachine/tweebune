@@ -8,8 +8,13 @@ jQuery ($) ->
   $("#fetch").bind "ajax:beforeSend", (event, xhr, settings) ->
     $("#tweets").empty()
     subscription.cancel()  unless subscription is null
+    $('#spinner').show()
     myregexp = /&user=.*(?=&)/
-    name = myregexp.exec(settings.data)[0].slice(6)
+    name = myregexp.exec(settings.data)[0].slice(6).replace("%40","")
     subscription = client.subscribe '/' + name, (data) ->
-      $("<p>" + data + "</p>").hide().prependTo("#tweets").fadeIn("slow")
+      if data.tweet is false
+        $("#spinner").hide()
+      else
+        console.log data.tweet
+        $(data.tweet).hide().prependTo("#tweets").fadeIn("slow")
 
