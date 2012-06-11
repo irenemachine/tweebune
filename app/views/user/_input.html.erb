@@ -1,5 +1,5 @@
 <div id="username-form">
-  <%= form_tag "/fetch", :method => "post", :remote => true do %>
+  <%= form_tag "/fetch", :method => "post", :remote => true, :id => "fetch" do %>
     <%= label_tag :user, "Username:", :class => 'user_label' %>
     <%= text_field_tag :user %>
     <%= submit_tag("Go") %>

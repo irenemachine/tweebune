@@ -21,11 +21,19 @@ class User
         self.tweets << Tweet.new(tweet.attrs).analysis
       end
     end
-    self.save
   end
 
   def categories
     #flesh this query out later, or store categories bson
     Array.new
+  end
+
+  after_save do |user|
+    user.tweets.reverse.each do |tweet|
+      sleep(1)
+      message = {:channel => "/" + self.name, :data => tweet.text }
+      uri = URI.parse("http://localhost:9292/faye")
+      puts Net::HTTP.post_form(uri, :message => message.to_json)
+    end
   end
 end

@@ -17,5 +17,6 @@ class UserController < ApplicationController
     end
     @user.update_tweets
     @user.save
+    render :nothing => true
   end
 end
