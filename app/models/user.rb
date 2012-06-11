@@ -1,7 +1,6 @@
 require 'mongo_mapper'
 class User
   include MongoMapper::Document
-
   safe
 
   key :name, String
@@ -29,11 +28,17 @@ class User
   end
 
   after_save do |user|
+    av = ActionController::Base.new
     user.tweets.reverse.each do |tweet|
       sleep(1)
-      message = {:channel => "/" + self.name, :data => tweet.text }
+      message = {:channel => "/" + self.name, :data => {
+        :tweet => av.render_to_string(:partial => "user/tweet", :locals => {:tweet => tweet })}
+      }
       uri = URI.parse("http://localhost:9292/faye")
-      puts Net::HTTP.post_form(uri, :message => message.to_json)
+      Net::HTTP.post_form(uri, :message => message.to_json)
     end
+    message = {:channel => "/" + self.name, :data => {:tweet => false} }
+    uri = URI.parse("http://localhost:9292/faye")
+    puts Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end
