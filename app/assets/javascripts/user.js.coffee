@@ -7,12 +7,9 @@ jQuery ($) ->
   subscription = null
   $("#fetch").bind "ajax:beforeSend", (event, xhr, settings) ->
     $("#tweets").empty()
-    console.log subscription
     subscription.cancel()  unless subscription is null
-    console.log subscription
     myregexp = /&user=.*(?=&)/
     name = myregexp.exec(settings.data)[0].slice(6)
     subscription = client.subscribe '/' + name, (data) ->
       $("<p>" + data + "</p>").hide().prependTo("#tweets").fadeIn("slow")
-    console.log subscription
 
