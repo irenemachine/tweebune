@@ -4,12 +4,13 @@ class UserController < ApplicationController
   end
 
   def fetch
-    unless @user = User.find_by_name(params["user"])
+    user = params["user"].gsub(/@/, "")
+    unless @user = User.find_by_name(user)
       begin
-        if Twitter.user(params["user"]).protected?
+        if Twitter.user(user).protected?
           render :private_user and return
         else
-          @user = User.new(:name => params["user"])
+          @user = User.new(:name => user)
         end
       rescue Twitter::Error::NotFound
         render :dne_user and return
